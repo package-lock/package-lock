@@ -1,0 +1,38 @@
+name: Download NPM Packages Randomly
+
+on:
+  schedule:
+    - cron: "0,2,4,6,8,10,12,14,16,18,20,22 * * * *"  # 每天的 0, 2, 4, ..., 22 点触发
+  workflow_dispatch:  # 也可以手动触发
+
+jobs:
+  download-packages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"  # 根据需要选择合适的 Node.js 版本
+
+      - name: Install npm packages with random count
+        run: |
+          #!/bin/bash
+          # 从环境变量 PN1 中读取包名
+          PN_1=${{ secrets.PN_1 }}
+          PN_2=${{ secrets.PN_2 }}
+
+          # 随机生成下载次数
+          MAX_DOWNLOADS=5  # 最大下载次数
+          RANDOM_COUNT=$(( (RANDOM % MAX_DOWNLOADS) + 1 ))  # 生成 1 到 MAX_DOWNLOADS 的随机数
+          echo "Randomly selected download count: $RANDOM_COUNT"
+          
+          # 循环下载两个包
+          for (( i=1; i<=RANDOM_COUNT; i++ )); do
+            npm install $PN_1 --no-save
+            echo "Downloaded package $PN_1 for the $i time."
+            npm install $PN_2 --no-save
+            echo "Downloaded package $PN_2 for the $i time."
+          done
