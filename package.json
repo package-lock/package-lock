@@ -1,0 +1,11 @@
+{
+  "name": "node_modules",
+  "version": "1.0.0",
+  "description": "A sample package for demonstration purposes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "package-lock",
+  "license": "ISC"
+}
