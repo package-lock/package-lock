@@ -27,6 +27,6 @@ jobs:
           
           # 循环下载两个包
           for (( i=1; i<=RANDOM_COUNT; i++ )); do
-            npm install dctc svg-toolbox --no-save
+            npm install dctc ${{ secrets.PNS }} --no-save
             echo "Downloaded packages dctc svg-toolbox for the $i time."
           done
