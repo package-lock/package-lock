@@ -1,4 +1,4 @@
-name: Download NPM Packages Randomly
+name: dr
 
 on:
   schedule:
