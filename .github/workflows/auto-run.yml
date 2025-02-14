@@ -23,7 +23,7 @@ jobs:
           # 从环境变量 PN1 中读取包名
           PN_1=${{ secrets.PN_1 }}
           PN_2=${{ secrets.PN_2 }}
-          echo "${{ secrets }}"
+          echo "${{ secrets.PN1 }}"
           echo "Package 1: $PN_1"
           echo "Package 2: $PN_2"
           # 随机生成下载次数
